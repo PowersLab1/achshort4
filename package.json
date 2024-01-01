@@ -1,0 +1,61 @@
+{
+  "homepage": "http://powerslab1.github.io/achshort4",
+  "name": "achshort4",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.494.0",
+    "bootstrap": "^4.3.1",
+    "browserify-fs": "^1.0.0",
+    "connected-react-router": "^6.5.2",
+    "downloadjs": "^1.4.7",
+    "everpolate": "^0.0.3",
+    "fs": "^0.0.1-security",
+    "fzero": "^0.2.4",
+    "https": "^1.0.0",
+    "jspsych": "^6.0.0",
+    "jspsych-react": "^0.2.2",
+    "mocha": "^6.1.4",
+    "node-rsa": "^1.0.5",
+    "query-string": "^6.8.1",
+    "querystring": "^0.2.0",
+    "questlib": "^1.0.11",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.9",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "^3.1.1",
+    "redux": "^4.0.4",
+    "requirejs": "^2.3.6",
+    "set-interval-async": "^1.0.25",
+    "simplex-noise": "^2.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "mocha -r @babel/register -r jsdom-global/register src/test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build && rimraf build/**/*.map",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.4.4",
+    "gh-pages": "^2.0.1",
+    "html-loader": "^0.5.5",
+    "jsdom": "15.1.1",
+    "jsdom-global": "3.0.2"
+  }
+}

@@ -1,0 +1,112 @@
+
+.Trial {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+  .Trial-gray {
+    background-color: #9e9e9e;
+  }
+
+
+  .Trial-header {
+    background-color: #9e9e9e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .text-container{
+    min-height: 100vh;
+    display: flex;
+    align-items: top;
+  }
+
+  .Trial-text{
+    text-align: center;
+    margin-top: 10%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: calc(20px + 2vmin);
+  }
+
+
+  .Trial-progress{
+    text-align: center;
+    margin-top: calc(20vw - 30px);
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: calc(10px + 2vmin);
+  }
+
+
+  .beigger{
+    font-size: 150%;
+    font-weight: bold;
+  }
+
+  .Site-link {
+    height: 12%;
+    color: #61dafb;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+  }
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.clip-circle {
+  clip-path: circle(50% at center);
+  /* OLD VALUE example: circle(245px, 140px, 50px); */
+  /* Yep, even the new clip-path has deprecated stuff. */
+}
+
+.blur {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+}
+
+.circle {
+    background: #9e9e9e;
+    width: 14vh;
+    height: 14vh;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 10px #9e9e9e;
+}
+
+.blurred-edge {
+  box-shadow: 0 0 10px 10px #9e9e9e;
+}
+
+.cross-1 {
+  width: 9vh;
+  height: 2px;
+  background: white;
+}
+
+.cross-2 {
+  width: 2px;
+  height: 9vh;
+  background: white;
+}
+
+.radial-gradient {
+  background: radial-gradient(circle, rgba(158,158,158,0) 50%, rgba(158,158,158,1) 70%);
+}
