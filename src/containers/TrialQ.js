@@ -6,6 +6,8 @@ import Trial from './Trial';
 
 import {create_blocks_singleton} from '../lib/tt_blocks';
 import {setQuestData, processAndStoreData, getProcessedData} from '../store';
+import { whitenoisedb } from '../lib/Stim.js';
+
 
 var questlib = require('questlib');
 const config = require('../config');
@@ -23,15 +25,15 @@ class TrialQ extends Component {
     // Initializing QUEST
     // NOTE: Modify your quest parameters here!
     // Decibel
-    let tGuess1 = 55,
-      tGuess2 = 55,
+    let tGuess1 = (whitenoisedb-25),
+      tGuess2 = (whitenoisedb-25),
       tGuessSd = 5,
       pThreshold = 0.75,
       beta = 0.1,
       delta = 0.01,
       gamma = 0.01,
       grain = 0.15,
-      range = 20;
+      range = 20; 
 
     this.q1 = new questlib.Quest(tGuess1, tGuessSd, pThreshold, beta, delta, gamma, grain, range);
     this.q2 = new questlib.Quest(tGuess2, tGuessSd, pThreshold, beta, delta, gamma, grain, range);

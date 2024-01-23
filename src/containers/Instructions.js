@@ -38,7 +38,7 @@ class Instructions extends Component {
             <header className="Instructions-header">
             <div className="text-container">
               <p className="Instructions-text">
-              This is a hearing test.
+              Now we can start the Hearing Test!
               <br /><br /> Auditory white noise (like static radio) will be played throughout the experiment.
               <br /><br /> A tone might play while the white noise continues when there are stripes on the screen.
               <br /><br />Only respond when you see the stripes.

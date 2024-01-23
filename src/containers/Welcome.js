@@ -69,7 +69,7 @@ class Welcome extends Component {
       // If we already sent out data, we're done.
       return <Redirect to="/ThankYou" />
     } else if (this.state.continue === true){
-      return <Redirect to="/Instructions" />
+      return <Redirect to="/VolumeCalibrationInstructions" />
     }
 
     return (

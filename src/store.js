@@ -1,9 +1,12 @@
 import {canUseLocalStorage, encryptWithPublicKey} from "./lib/utils";
-import {visualStim, auditoryStim} from "./lib/Stim";
+import {visualStim, auditoryStim, whitenoisedb} from "./lib/Stim";
+import { whitenoisedb as whitenoisedbvalue } from './lib/Stim.js'; //added by max
+
 
 const config = require('./config');
 const _ = require('lodash');
 var questlib = require('questlib');
+
 
 // Global store for setting and getting task data.
 // Simpler than redux and suits our needs.
@@ -30,6 +33,8 @@ export const START_TIMESTAMP_KEY = 'startTimestamp';
 export const DATA_SENT_KEY = 'dataSent';
 export const STORAGE_KEY = config.taskName;
 export const TASK_NAME_KEY = 'taskName';
+
+//const whitenoisevolume = whitenoisedb
 
 const questParamsToKeep = [
   'updatePdf',
@@ -58,7 +63,8 @@ export function setQuestData(
   response_q2,
   responseTime_q2,
   timestamps,
-  startTimestamp) {
+  startTimestamp
+  ) {
 
   const store = LocalStorageBackedStore.store;
 
@@ -164,6 +170,8 @@ export function getStoreExport() {
   const dataToExport = _.clone(LocalStorageBackedStore.store);
   dataToExport[TASK_NAME_KEY] = config.taskName;
   dataToExport["taskVersion"] = config.taskVersion;
+  dataToExport["WhiteNoiseDecibels"] = whitenoisedbvalue;
+
 
   // Inject stim data
   dataToExport["visualStim"] = visualStim;

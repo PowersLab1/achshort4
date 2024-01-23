@@ -1,8 +1,12 @@
 export const visualStim = createVisualStim();
 export const patch = createPatch(visualStim);
 export const stimulus_blank = createGabor(patch, 0);
-
 export const auditoryStim = createAuditoryStim();
+// New function to update whitenoisedb -- decreases total volume
+export function setWhiteNoiseDb(newDb) {
+  whitenoisedb = newDb;
+}
+  export { whitenoisedb };
 
 /*****************************
  *                           *
@@ -104,8 +108,48 @@ function createPatch(stim) {
    osc.stop(audioContext.currentTime+ms/1000);
  }
 
+
+
+ let whitenoisedb = 80; // Default volume in decibels
+
+ let whiteNoiseSource = null;
+
+ 
+
+//this version does not stop and disconnect the the whitenoisesource everytime so as to hopefully decrease potential time lags produced by adding audicontexts eachtime 
+// Courtesy of https://noisehack.com/generate-noise-web-audio-api/
+export function playWhiteNoiseTest(audioContext) {
+    console.log("Playing white noise via playWhiteNoiseTest at volume (dB):", whitenoisedb);
+
+    // Create buffer for 3 seconds
+    var bufferSize = 3 * audioContext.sampleRate,
+        noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate);
+
+    for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
+        var nowBuffering = noiseBuffer.getChannelData(channel);
+        for (var i = 0; i < bufferSize; i++) {
+            nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3);
+        }
+    }
+
+    if (!whiteNoiseSource || whiteNoiseSource.buffer !== noiseBuffer) {
+      // If whiteNoiseSource does not exist or its buffer is different, recreate it
+      if (whiteNoiseSource) {
+          whiteNoiseSource.stop();
+          whiteNoiseSource.disconnect();
+      }
+
+      whiteNoiseSource = audioContext.createBufferSource();
+      whiteNoiseSource.buffer = noiseBuffer;
+      whiteNoiseSource.loop = true;
+      whiteNoiseSource.connect(audioContext.destination);
+      whiteNoiseSource.start();
+  }
+}
+//this is the original playWhiteNoise function with whitenoisedb in it
 // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
 export function playWhiteNoise(audioContext) {
+  console.log("Playing white noise via REAL playWhiteNoise at volume (dB):", whitenoisedb);
   //console.log(2 * audioContext.sampleRate
   // Create buffer for 2 seconds
   var bufferSize = 3 * audioContext.sampleRate,
@@ -117,7 +161,7 @@ export function playWhiteNoise(audioContext) {
     var nowBuffering = noiseBuffer.getChannelData(channel);
     for (var i = 0; i < noiseBuffer.length; i++) {
       // audio needs to be in [-1.0; 1.0]
-      nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(80, 0.0150, 78.3);
+      nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3);
     }
   }
 
@@ -128,8 +172,14 @@ export function playWhiteNoise(audioContext) {
   whiteNoise.start(0);
 }
 
+
+function db2scale(desiredDb, standardScale, standardDb) {
+  return Math.pow(10, (desiredDb - standardDb) / 20) * standardScale;
+}
+
+
 // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
-export function playPinkNoise(audioContext) {
+export function playPinkNoise(audioContext) { //this function is not used
   var bufferSize = 4096;
   var pinkNoise = (function() {
     var b0, b1, b2, b3, b4, b5, b6;
@@ -146,7 +196,7 @@ export function playPinkNoise(audioContext) {
         b4 = 0.55000 * b4 + white * 0.5329522;
         b5 = -0.7616 * b5 - white * 0.0168980;
         output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
-        output[i] *= 0.11; // (roughly) compensate for gain
+        output[i] *= 0.088; // (roughly) compensate for gain
         b6 = white * 0.115926;
       }
     }
@@ -169,15 +219,11 @@ export function playBrownianNoise(audioContext) {
               var white = Math.random() * 2 - 1;
               output[i] = (lastOut + (0.02 * white)) / 1.02;
               lastOut = output[i];
-              output[i] *= 3.5; // (roughly) compensate for gain
+              output[i] *= 2.975; // (roughly) compensate for gain
           }
       }
       return node;
   })();
 
   brownNoise.connect(audioContext.destination);
-}
-
-function db2scale(desiredDb, standardScale, standardDb) {
-  return Math.pow(10, (desiredDb - standardDb) / 20) * standardScale;
 }

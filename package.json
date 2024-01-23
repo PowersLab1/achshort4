@@ -1,7 +1,7 @@
 {
   "homepage": "http://powerslab1.github.io/achshort4",
   "name": "achshort4",
-  "version": "0.1.0",
+  "version": "0.1.0AdjustableVolume",
   "private": true,
   "dependencies": {
     "aws-sdk": "^2.494.0",
