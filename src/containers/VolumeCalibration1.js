@@ -69,6 +69,7 @@ class VolumeCalibration1 extends Component {
                         Is this noise loud but tolerable?
                         <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test Instructions
                         <br /><br /> IF INTOLERABLE: <b>Press E</b> to try a lower volume 
+                        <br /><br /> Adjustments so far: <b>0</b>
                     </p>
                 </div>
                 </header>

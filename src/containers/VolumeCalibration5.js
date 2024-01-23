@@ -70,6 +70,7 @@ class VolumeCalibration5 extends Component {
                         Is this volume better (this is close to as low as the volume goes)?
                         <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test Instructions
                         <br /><br /> IF INTOLERABLE: <b>Press E</b> to try a lower volume 
+                        <br /><br /> Adjustments so far: <b>4</b>
                     </p>
                 </div>
                 </header>

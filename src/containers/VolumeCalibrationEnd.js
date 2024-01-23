@@ -69,6 +69,7 @@ class VolumeCalibrationEnd extends Component {
                     <p className="VolumeInstructions-text">
                         Now we should be all set! Get ready to listen for the tone in the white noise!
                         <br /><br /> <b>Press Q</b> to continue to the Hearing Test Instructions!
+                        <br /><br /> Adjustments so far: <b>5</b>
                     </p>
                 </div>
                 </header>
