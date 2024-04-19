@@ -117,7 +117,7 @@ class ThankYou extends Component {
       return (
         <div className="ThankYou">
           <p className="ThankYou-text">
-            Loading... (if stuck here for more than 30 seconds try refreshing a few times)
+            Loading... (if stuck here for more than 30s try refreshing a few times)
           </p>
         </div>
       );
